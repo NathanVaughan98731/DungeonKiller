@@ -20,10 +20,12 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: ca36bf92f13af1e438402a72db8f4446, type: 2}
   rect:
     serializedVersion: 2
-    x: 427
-    y: 184.85715
+    x: 457
+    y: 146.85715
     width: 160
     height: 75
+  isLeftClickDragging: 0
+  isSelected: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +43,7 @@ MonoBehaviour:
   - {fileID: -385640941054910653}
   - {fileID: 320130432371771778}
   - {fileID: 3233402687956319193}
+  - {fileID: 3967923044127638814}
 --- !u!114 &320130432371771778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +64,12 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: ca36bf92f13af1e438402a72db8f4446, type: 2}
   rect:
     serializedVersion: 2
-    x: 229
-    y: 229.85715
+    x: 127
+    y: 145.85715
     width: 160
     height: 75
+  isLeftClickDragging: 0
+  isSelected: 1
 --- !u!114 &3233402687956319193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +90,35 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: ca36bf92f13af1e438402a72db8f4446, type: 2}
   rect:
     serializedVersion: 2
-    x: 388
-    y: 28.857143
+    x: 296
+    y: 148.85715
     width: 160
     height: 75
+  isLeftClickDragging: 0
+  isSelected: 1
+--- !u!114 &3967923044127638814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec7069a00936724ca4dcd76c442245e, type: 3}
+  m_Name: RoomNode
+  m_EditorClassIdentifier: 
+  id: e5923084-a779-4f14-9d17-01e6818f41a0
+  parentRoomNodeIDList: []
+  childRoomNodeList: []
+  roomNodeGraph: {fileID: 11400000}
+  roomNodeType: {fileID: 11400000, guid: 1dda0993903cb8a4ca98ff4f24274732, type: 2}
+  roomNodeTypeList: {fileID: 11400000, guid: ca36bf92f13af1e438402a72db8f4446, type: 2}
+  rect:
+    serializedVersion: 2
+    x: 617
+    y: 146.85715
+    width: 160
+    height: 75
+  isLeftClickDragging: 0
+  isSelected: 0
