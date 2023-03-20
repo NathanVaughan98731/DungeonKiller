@@ -574,9 +574,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0040816325
+    x: 0.019762844
     y: 0
-    width: 0.9904762
+    width: 0.95915675
     height: 0.9994769
   near clip plane: 0.3
   far clip plane: 1000
@@ -851,6 +851,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1801690346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801690348}
+  - component: {fileID: 1801690347}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1801690347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801690346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a17943ab9dd3d409ef4f28dd3cbc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonLevelList:
+  - {fileID: 11400000, guid: 147b5b2baa068f64b807994b697b873b, type: 2}
+  - {fileID: 11400000, guid: 0f03b2c6fc0f63c4a838fa0cebec41e7, type: 2}
+  - {fileID: 11400000, guid: fa32ebad4881f4a4ba20eba7e6190324, type: 2}
+  - {fileID: 11400000, guid: c5c3da7d21859844fa506a999dd0a491, type: 2}
+  - {fileID: 11400000, guid: 3e2a947268e33a045a049806bbe4bf52, type: 2}
+  - {fileID: 11400000, guid: e1c2445dcf2f38043bc0667b9d003284, type: 2}
+  currentDuingeonLevelListIndex: 0
+  gameState: 0
+--- !u!4 &1801690348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801690346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.044799283, y: 0.880705, z: -0.48713452}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1831515044
 GameObject:
