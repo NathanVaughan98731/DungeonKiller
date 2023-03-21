@@ -20250,6 +20250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8433662351367196475}
   - component: {fileID: 8433662351367196476}
+  - component: {fileID: -2689558451920692038}
   m_Layer: 12
   m_Name: MediumRoom_MyRooms_1
   m_TagString: Untagged
@@ -20300,6 +20301,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 46, y: 46}
   m_EdgeRadius: 0
+--- !u!114 &-2689558451920692038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433662351367196477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325114c13c68c28418ac4facf76c28f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8433662351401918119
 GameObject:
   m_ObjectHideFlags: 0

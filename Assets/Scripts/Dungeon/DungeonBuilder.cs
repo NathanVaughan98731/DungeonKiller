@@ -522,7 +522,29 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     // Instantiate the dungeon room gameobjects from the prefabs
     private void InstantiateRoomGameObjects()
     {
+        // Iterate through all dungeon rooms.
+        foreach (KeyValuePair<string, Room> keyvaluepair in dungeonBuilderRoomDictionary)
+        {
+            Room room = keyvaluepair.Value;
 
+            // Calculate room position (remember the room instantiation position needs to be adjusted by the room template lower bounds)
+            Vector3 roomPosition = new Vector3(room.lowerBounds.x - room.templateLowerBounds.x, room.lowerBounds.y - room.templateLowerBounds.y, 0f);
+
+            // Instantiate room
+            GameObject roomGameObject = Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
+
+            // Get instantiated room component from instantiated prefab
+            InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+            instantiatedRoom.room = room;
+
+            // Initialise the instantiated room
+            instantiatedRoom.Initialise(roomGameObject);
+
+            // Save gameobject reference
+            room.instantiatedRoom = instantiatedRoom;
+
+
+        }
     }
 
     // Get a room template by room template ID, returns null if ID does not exist

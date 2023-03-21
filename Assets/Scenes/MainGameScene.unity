@@ -618,10 +618,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.019762844
+    x: 0
     y: 0
-    width: 0.95915675
-    height: 0.9994769
+    width: 0.99999994
+    height: 0.9981838
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -932,7 +932,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c5c3da7d21859844fa506a999dd0a491, type: 2}
   - {fileID: 11400000, guid: 3e2a947268e33a045a049806bbe4bf52, type: 2}
   - {fileID: 11400000, guid: e1c2445dcf2f38043bc0667b9d003284, type: 2}
-  currentDuingeonLevelListIndex: 0
+  currentDuingeonLevelListIndex: 5
   gameState: 0
 --- !u!4 &1801690348
 Transform:
