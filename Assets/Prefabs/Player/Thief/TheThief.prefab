@@ -7,6 +7,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2891374265778310500, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891374265778310500, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891374265778310500, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b5ac9283e75b37a43a02baa6b1a6e955, type: 3}
+    - target: {fileID: 2891374265778310500, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767176825464442240, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767176825464442241, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767176825464442241, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767176825464442241, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b5ac9283e75b37a43a02baa6b1a6e955, type: 3}
+    - target: {fileID: 5767176825464442241, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767176825831433686, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d8d115d0dd52f25499c442d6d3130c9a, type: 2}
+    - target: {fileID: 5767176825831433687, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1586924254, guid: 9456bf9c2ca2e3d46aafde7aad33a9c3, type: 3}
     - target: {fileID: 5767176825831433690, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5767176825831433709, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: TheThief
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
