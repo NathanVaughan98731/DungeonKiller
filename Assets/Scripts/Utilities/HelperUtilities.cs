@@ -4,6 +4,76 @@ using UnityEngine;
 
 public static class HelperUtilities
 {
+    public static Camera mainCamera;
+
+    // Get the mouse world position
+    public static Vector3 GetMouseWorldPosition()
+    {
+
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        Vector3 mouseScreenPosition = Input.mousePosition;
+
+        // Clamp mouse position to screen size
+        mouseScreenPosition.x = Mathf.Clamp(mouseScreenPosition.x, 0f, Screen.width);
+        mouseScreenPosition.y = Mathf.Clamp(mouseScreenPosition.y, 0f, Screen.height);
+
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+
+        worldPosition.z = 0f;
+        return worldPosition;
+    }
+
+    // Get the angle in degrees from a direction vector
+    public static float GetAngleFromVector(Vector3 vector)
+    {
+        float radians = Mathf.Atan2(vector.y, vector.x);
+
+        float degrees = radians * Mathf.Rad2Deg;
+
+        return degrees;
+    }
+
+    // Get AimDirection enum value from the passed in angle degrees
+    public static AimDirection GetAimDirection(float angleDegrees)
+    {
+        AimDirection aimDirection;
+
+        // Set player direction
+        if (angleDegrees >= 22f && angleDegrees <= 67f)
+        {
+            aimDirection = AimDirection.UpRight;
+        }
+        else if (angleDegrees > 67f && angleDegrees <= 112f)
+        {
+            aimDirection = AimDirection.Up;
+        }
+        else if (angleDegrees > 112f && angleDegrees <= 158f)
+        {
+            aimDirection = AimDirection.UpLeft;
+        }
+        else if ((angleDegrees <= 180f && angleDegrees > 158f) || (angleDegrees > -180 && angleDegrees <= -135f))
+        {
+            aimDirection = AimDirection.Left;
+        }
+        else if (angleDegrees > -135f && angleDegrees <= -45f)
+        {
+            aimDirection = AimDirection.Down;
+        }
+        else if ((angleDegrees > -45f && angleDegrees <= 0f) || (angleDegrees > 0 && angleDegrees < 22f))
+        {
+            aimDirection = AimDirection.Right;
+        }
+        else
+        {
+            aimDirection = AimDirection.Right;
+        }
+
+        return aimDirection;
+    }
+
+    // Empty string debug check
     public static bool ValidateCheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
     {
         if (stringToCheck == "")
