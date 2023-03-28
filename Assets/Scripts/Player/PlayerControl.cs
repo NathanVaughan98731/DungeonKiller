@@ -5,17 +5,25 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     #region Tooltip
+    [Tooltip("MovementDetailsSO scriptable object containing movement details such as speed")]
+    #endregion Tooltip
+
+    [SerializeField] private MovementDetailsSO movementDetails;
+
+    #region Tooltip
     [Tooltip("The player WeaponShootPosition gameobject in the hierarchy")]
     #endregion Tooltip
 
     [SerializeField] private Transform weaponShootPosition;
 
     private Player player;
+    private float moveSpeed;
 
     private void Awake()
     {
         // Load components
         player = GetComponent<Player>();
+        moveSpeed = movementDetails.GetMoveSpeed();
     }
 
     private void Update()
@@ -30,7 +38,31 @@ public class PlayerControl : MonoBehaviour
     // Player movement input
     private void MovementInput()
     {
-        player.idleEvent.CallIdleEvent();
+        // Get movement input
+        float horizontalMovement = Input.GetAxisRaw("Horizontal");
+        float verticalMovement = Input.GetAxisRaw("Vertical");
+
+        // Create a direction vector based on the input
+        Vector2 direction = new Vector2(horizontalMovement, verticalMovement);
+
+        // Adjust the distance for diagonal movement 
+        if (horizontalMovement != 0 && verticalMovement != 0)
+        {
+            direction *= 0.707f;
+        }
+
+        // If the player is meant to be moving
+        if (direction != Vector2.zero)
+        {
+            // Trigger movement event
+            player.movementByVelocityEvent.CallMovementByVelocityEvent(direction, moveSpeed);
+        }
+        else
+        {
+            player.idleEvent.CallIdleEvent();
+
+        }
+
     }
 
     // Player weapon input
@@ -69,4 +101,13 @@ public class PlayerControl : MonoBehaviour
         // Trigger weapon aim event
         player.aimWeaponEvent.CallAimWeaponEvent(playerAimDirection, playerAngleDegrees, weaponAngleDegrees, weaponDirection);
     }
+
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(movementDetails), movementDetails);
+    }
+#endif
+    #endregion Validation
 }

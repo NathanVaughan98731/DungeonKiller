@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1485288440257033006, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d1d154441313ad43b855575c9c1c204, type: 2}
     - target: {fileID: 2891374265778310500, guid: f495b3987c43f2b4f9c8c72a602674ab, type: 3}
       propertyPath: m_Size.x
       value: 0.25
