@@ -8,6 +8,11 @@ public class CinemachineTarget : MonoBehaviour
 {
     private CinemachineTargetGroup cinemachineTargetGroup;
 
+    #region Tooltip
+    [Tooltip("Populate with the CursorTarget gameobject")]
+    #endregion Tooltip
+    [SerializeField] private Transform cursorTarget;
+
     private void Awake()
     {
         // Load components
@@ -22,11 +27,18 @@ public class CinemachineTarget : MonoBehaviour
     // Set the cinemachine camera target group
     private void SetCinemachineTargetGroup()
     {
-        // Create target group for cinemachine for the cinemachine camera to follow
-        CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target { weight = 1f, radius = 1f, target = GameManager.Instance.GetPlayer().transform };
+        // Create target group for cinemachine for the cinemachine camera to follow - group follows player and cursor
+        CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target { weight = 1f, radius = 2f, target = GameManager.Instance.GetPlayer().transform };
 
-        CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[] { cinemachineGroupTarget_player };
+        CinemachineTargetGroup.Target cinemachineGroupTarget_cursor = new CinemachineTargetGroup.Target { weight = 1f, radius = 1f, target = cursorTarget };
+
+        CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[] { cinemachineGroupTarget_player, cinemachineGroupTarget_cursor };
 
         cinemachineTargetGroup.m_Targets = cinemachineTargetArray;
+    }
+
+    private void Update()
+    {
+        cursorTarget.position = HelperUtilities.GetMouseWorldPosition();
     }
 }
