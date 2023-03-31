@@ -26,6 +26,20 @@ public class InstantiatedRoom : MonoBehaviour
         roomColliderBounds = boxCollider2D.bounds;
     }
 
+    // Trigger room changed event when player enters a room
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // If the player triggered the collider
+        if (collision.tag == Settings.playerTag && room != GameManager.Instance.GetCurrentRoom())
+        {
+            // Set room as visited
+            this.room.isPreviouslyVisited = true;
+
+            // Call room changed event
+            StaticEventHandler.CallRoomChangedEvent(room);
+        }
+    }
+
     // Initialise the instantiated room
     public void Initialise(GameObject roomGameObject)
     {

@@ -41,6 +41,12 @@ public class Door : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        // Restore animator state
+        animator.SetBool(Settings.open, isOpen);
+    }
+
     // Open the door
     public void OpenDoor()
     {

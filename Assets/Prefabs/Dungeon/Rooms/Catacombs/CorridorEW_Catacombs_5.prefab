@@ -9461,6 +9461,7 @@ GameObject:
   - component: {fileID: 316384385408736750}
   - component: {fileID: 7061706898141806551}
   - component: {fileID: 849296778211255141}
+  - component: {fileID: 6396143661041359085}
   m_Layer: 12
   m_Name: CorridorEW_Catacombs_5
   m_TagString: Untagged
@@ -9521,6 +9522,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 325114c13c68c28418ac4facf76c28f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  groundTilemap: {fileID: 0}
+  decoration1Tilemap: {fileID: 0}
+  decoration2Tilemap: {fileID: 0}
+  frontTilemap: {fileID: 0}
+  collisionTilemap: {fileID: 0}
+  minimapTilemap: {fileID: 0}
+  roomColliderBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+--- !u!114 &6396143661041359085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351491626515514454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62762ae0c290a0e41aacb0686707d053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6714043297886329097
