@@ -222,6 +222,18 @@ public class InstantiatedRoom : MonoBehaviour
                     door = Instantiate(doorway.doorPrefab, gameObject.transform);
                     door.transform.localPosition = new Vector3(doorway.position.x, doorway.position.y + tileDistance * 1.25f, 0f);
                 }
+
+                // Get Door component
+                Door doorComponent = door.GetComponent<Door>();
+
+                // Set if the door is part of a boss room
+                if (room.roomNodeType.isBossRoom)
+                {
+                    doorComponent.isBossRoomDoor = true;
+
+                    // Lock the door to prevent access to room
+                    doorComponent.LockDoor();
+                }
             }
         }
     }
