@@ -409,6 +409,9 @@ GameObject:
   - component: {fileID: 3757619574002451459}
   - component: {fileID: 5198656181694557624}
   - component: {fileID: 3637332072795481688}
+  - component: {fileID: 6019883843477040734}
+  - component: {fileID: 3039244214009809374}
+  - component: {fileID: 2370380886484715809}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -635,6 +638,8 @@ MonoBehaviour:
   setActiveWeaponEvent: {fileID: 0}
   activeWeapon: {fileID: 0}
   weaponFiredEvent: {fileID: 0}
+  reloadWeaponEvent: {fileID: 0}
+  weaponReloadedEvent: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &1485288440257033006
@@ -821,6 +826,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f1daa230d588943bb5aa994a70086e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6019883843477040734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767176825831433709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cac8cf9dad25184fa524a7d194a5c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3039244214009809374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767176825831433709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e402b8eaf1e0b524b9967f493f2328ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2370380886484715809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767176825831433709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a3fe7ea6b92bf4a8828ed871882f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5799218706935321182

@@ -86,7 +86,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         HandleGameState();
 
         // Testing the dungeon generations
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             gameState = GameState.gameStarted;
         }
