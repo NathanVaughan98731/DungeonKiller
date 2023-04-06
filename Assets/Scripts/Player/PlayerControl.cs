@@ -12,12 +12,6 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private MovementDetailsSO movementDetails;
 
-    #region Tooltip
-    [Tooltip("The player WeaponShootPosition gameobject in the hierarchy")]
-    #endregion Tooltip
-
-    [SerializeField] private Transform weaponShootPosition;
-
     private Player player;
     private int currentWeaponIndex = 1;
     private float moveSpeed;
@@ -184,7 +178,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 mouseWorldPosition = HelperUtilities.GetMouseWorldPosition();
 
         // Calculate direction vector of mouse cursor from weapon shoot position
-        weaponDirection = (mouseWorldPosition - weaponShootPosition.position);
+        weaponDirection = (mouseWorldPosition - player.activeWeapon.GetShootPosition());
 
         // Calculate direction vector of mouse cursor from player transform position
         Vector3 playerDirection = (mouseWorldPosition - transform.position);
