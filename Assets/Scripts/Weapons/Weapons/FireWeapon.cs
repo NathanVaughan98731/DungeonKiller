@@ -155,6 +155,8 @@ public class FireWeapon : MonoBehaviour
         // Loop for the number of ammo per shot
         while (ammoCounter < ammoPerShot)
         {
+            ammoCounter++;
+
             // Get ammo prefab from array
             GameObject ammoPrefab = currentAmmo.ammoPrefabArray[Random.Range(0, currentAmmo.ammoPrefabArray.Length)];
 
