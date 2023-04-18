@@ -86,7 +86,6 @@ public class PoolManager : SingletonMonobehaviour<PoolManager>
     {
         Component componentToReuse = poolDictionary[poolKey].Dequeue();
         poolDictionary[poolKey].Enqueue(componentToReuse);
-        Debug.Log(componentToReuse);
 
         if (componentToReuse.gameObject.activeSelf == true)
         {
