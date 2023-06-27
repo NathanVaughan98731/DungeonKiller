@@ -8,7 +8,7 @@ public static class AStar
     {
         // Adjust positions by lower bounds
         startGridPosition -= (Vector3Int)room.templateLowerBounds;
-        endGridPosition -= (Vector3Int)room.templateUpperBounds;
+        endGridPosition -= (Vector3Int)room.templateLowerBounds;
 
         // Create the open list and closed hashset
         List<Node> openNodeList = new List<Node>();
