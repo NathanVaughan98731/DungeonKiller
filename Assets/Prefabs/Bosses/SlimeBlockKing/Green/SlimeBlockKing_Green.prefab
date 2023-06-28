@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 166148367694397991, guid: af07c8c8248b5104bb50f96c4af01a05, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 565d2513c0bcd504082954bd1cebcea6, type: 2}
     - target: {fileID: 374233176600308627, guid: af07c8c8248b5104bb50f96c4af01a05, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -191,6 +195,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6960455196465456646, guid: af07c8c8248b5104bb50f96c4af01a05, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d3180c946afe0d45904146eaf3aadb0, type: 2}
     - target: {fileID: 6971464704599964503, guid: af07c8c8248b5104bb50f96c4af01a05, type: 3}
       propertyPath: m_Name
       value: SlimeBlockKing_Green
