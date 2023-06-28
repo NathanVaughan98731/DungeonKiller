@@ -24,7 +24,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [Tooltip("Populate with the starting dungeon level for testing, first level = 0")]
     #endregion Tooltip
 
-    [SerializeField] private int currentDuingeonLevelListIndex = 0;
+    [SerializeField] private int currentDungeonLevelListIndex = 0;
     private Room currentRoom;
     private Room previousRoom;
     private PlayerDetailsSO playerDetails;
@@ -100,7 +100,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         {
             case GameState.gameStarted:
                 // Play first level
-                PlayDungeonLevel(currentDuingeonLevelListIndex);
+                PlayDungeonLevel(currentDungeonLevelListIndex);
                 gameState = GameState.playingLevel;
                 break;
         }
@@ -150,6 +150,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public Room GetCurrentRoom()
     {
         return currentRoom;
+    }
+
+    // Get current dungeon level
+    public DungeonLevelSO GetCurrentDungeonLevel()
+    {
+        return dungeonLevelList[currentDungeonLevelListIndex];
     }
 
     #region Validation

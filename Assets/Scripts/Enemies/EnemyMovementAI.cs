@@ -29,7 +29,7 @@ public class EnemyMovementAI : MonoBehaviour
     private void Start()
     {
         // Create waitForFixed update to be used in coroutine
-        waitForFixedUpdate = GetComponent<WaitForFixedUpdate>();
+        waitForFixedUpdate = new WaitForFixedUpdate();
 
         // Reset the player reference position
         playerReferencePosition = GameManager.Instance.GetPlayer().GetPlayerPosition();
