@@ -485,7 +485,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         // If there are no enemies to spawn then we default the room to be clear of enemies
         if (room.GetNumberOfEnemiesToSpawn(GameManager.Instance.GetCurrentDungeonLevel()) == 0)
         {
-            room.isClearedOfEnemeies = true;
+            room.isClearedOfEnemies = true;
         }
 
         return room;
