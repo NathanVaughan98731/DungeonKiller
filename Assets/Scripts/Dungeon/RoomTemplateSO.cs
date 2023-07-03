@@ -82,6 +82,11 @@ public class RoomTemplateSO : ScriptableObject
     #endregion Tooltip
     [SerializeField] public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
 
+    #region Tooltip
+    [Tooltip("Populate the list with the spawn parameters for the enemies.")]
+    #endregion
+    public List<RoomEnemySpawnParameters> roomEnemySpawnParametersList;
+
     /// <summary>
     /// Returns the list of Entrances for the room template
     /// </summary>
@@ -103,6 +108,49 @@ public class RoomTemplateSO : ScriptableObject
             guid = GUID.Generate().ToString();
             previousPrefab = prefab;
             EditorUtility.SetDirty(this);
+        }
+
+        HelperUtilities.ValidateCheckNullValue(this, nameof(prefab), prefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(roomNodeType), roomNodeType);
+
+        // Check enemies and room spawn parameters for levels
+        if (enemiesByLevelList.Count > 0 || roomEnemySpawnParametersList.Count > 0)
+        {
+            HelperUtilities.ValidateCheckEnumerableValues(this, nameof(enemiesByLevelList), enemiesByLevelList);
+            HelperUtilities.ValidateCheckEnumerableValues(this, nameof(roomEnemySpawnParametersList), roomEnemySpawnParametersList);
+
+            foreach (RoomEnemySpawnParameters roomEnemySpawnParameters in roomEnemySpawnParametersList)
+            {
+                HelperUtilities.ValidateCheckNullValue(this, nameof(roomEnemySpawnParameters.dungeonLevel), roomEnemySpawnParameters.dungeonLevel);
+                HelperUtilities.ValidateCheckPositiveRange(this, nameof(roomEnemySpawnParameters.minTotalEnemiesToSpawn), roomEnemySpawnParameters.minTotalEnemiesToSpawn, nameof(roomEnemySpawnParameters.maxTotalEnemiesToSpawn), roomEnemySpawnParameters.maxTotalEnemiesToSpawn, true);
+                HelperUtilities.ValidateCheckPositiveRange(this, nameof(roomEnemySpawnParameters.minSpawnInterval), roomEnemySpawnParameters.minSpawnInterval, nameof(roomEnemySpawnParameters.maxSpawnInterval), roomEnemySpawnParameters.maxSpawnInterval, true);
+                HelperUtilities.ValidateCheckPositiveRange(this, nameof(roomEnemySpawnParameters.minConcurrentEnemies), roomEnemySpawnParameters.minConcurrentEnemies, nameof(roomEnemySpawnParameters.maxConcurrentEnemies), roomEnemySpawnParameters.maxConcurrentEnemies, true);
+
+                bool isEnemyTypesListForDungeonLevel = false;
+
+                // Validate enemy types list
+                foreach (SpawnableObjectsByLevel<EnemyDetailsSO> dungeonObjectsByLevel in enemiesByLevelList)
+                {
+                    if (dungeonObjectsByLevel.dungeonLevel == roomEnemySpawnParameters.dungeonLevel && dungeonObjectsByLevel.spawnableObjectRatioList.Count > 0)
+                    {
+                        isEnemyTypesListForDungeonLevel = true;
+                    }
+
+                    HelperUtilities.ValidateCheckNullValue(this, nameof(dungeonObjectsByLevel.dungeonLevel), dungeonObjectsByLevel.dungeonLevel);
+
+                    foreach (SpawnableObjectRatio<EnemyDetailsSO> dungeonObjectRatio in dungeonObjectsByLevel.spawnableObjectRatioList)
+                    {
+                        HelperUtilities.ValidateCheckNullValue(this, nameof(dungeonObjectRatio.dungeonObject), dungeonObjectRatio.dungeonObject);
+                        HelperUtilities.ValidateCheckPositiveValue(this, nameof(dungeonObjectRatio.ratio), dungeonObjectRatio.ratio, false);
+                    }
+                }
+
+                if (isEnemyTypesListForDungeonLevel == false && roomEnemySpawnParameters.dungeonLevel != null)
+                {
+                    Debug.Log("There is no enemy types specified in the dungeon level " + roomEnemySpawnParameters.dungeonLevel.levelName + " in gameobject " + this.name.ToString());
+                }
+
+            }
         }
 
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(doorwayList), doorwayList);
