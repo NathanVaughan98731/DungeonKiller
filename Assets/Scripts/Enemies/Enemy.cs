@@ -42,7 +42,15 @@ public class Enemy : MonoBehaviour
     {
         this.enemyDetails = enemyDetails;
 
+        SetEnemyMovementUpdateFrame(enemySpawnNumber);
+
         SetEnemyAnimationSpeed();
+    }
+
+    // Set the enemy movement update frame
+    private void SetEnemyMovementUpdateFrame(int enemySpawnNumber)
+    {
+        enemyMovementAI.SetUpdateFrameNumber(enemySpawnNumber % Settings.targetFrameRateToSpreadPathfindingOver);
     }
 
     // Set enemy animator speed to match the movement
