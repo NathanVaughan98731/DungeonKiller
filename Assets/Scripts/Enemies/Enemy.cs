@@ -8,6 +8,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(MovementToPosition))]
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(Idle))]
+[RequireComponent(typeof(MaterialiseEffect))]
 [RequireComponent(typeof(SortingGroup))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     private EnemyMovementAI enemyMovementAI;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
     [HideInInspector] public IdleEvent idleEvent;
+    private MaterialiseEffect materialiseEffect;
     private CircleCollider2D circleCollider2D;
     private PolygonCollider2D polygonCollider2D;
     [HideInInspector] public SpriteRenderer[] spriteRendererArray;
@@ -32,6 +34,7 @@ public class Enemy : MonoBehaviour
         enemyMovementAI = GetComponent<EnemyMovementAI>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
         idleEvent = GetComponent<IdleEvent>();
+        materialiseEffect = GetComponent<MaterialiseEffect>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         spriteRendererArray = GetComponentsInChildren<SpriteRenderer>();
@@ -45,6 +48,8 @@ public class Enemy : MonoBehaviour
         SetEnemyMovementUpdateFrame(enemySpawnNumber);
 
         SetEnemyAnimationSpeed();
+
+        StartCoroutine(MaterialiseEnemy());
     }
 
     // Set the enemy movement update frame
@@ -58,5 +63,25 @@ public class Enemy : MonoBehaviour
     {
         // Set the animator speed to match the movement of enemy
         // animator.speed = enemyMovementAI.moveSpeed / Settings.baseSpeedForEnemyAnimations;
+    }
+
+    private IEnumerator MaterialiseEnemy()
+    {
+        // Disable collider, movement and weapon
+        EnemyEnable(false);
+
+        yield return StartCoroutine(materialiseEffect.MaterialiseRoutine(enemyDetails.enemyMaterialiseShader, enemyDetails.enemyMaterialiseColor, enemyDetails.enemyMaterialiseTime, spriteRendererArray, enemyDetails.enemyStandardMaterial));
+
+        // Enable collider, movement and weapon
+        EnemyEnable(true);
+    }
+
+    private void EnemyEnable(bool isEnabled)
+    {
+        // Enable/Disable
+        circleCollider2D.enabled = isEnabled;
+        polygonCollider2D.enabled = isEnabled;
+
+        enemyMovementAI.enabled = isEnabled;
     }
 }

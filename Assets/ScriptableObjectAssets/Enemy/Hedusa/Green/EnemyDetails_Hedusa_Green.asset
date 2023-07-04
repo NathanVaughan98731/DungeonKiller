@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Hedusa Green
   enemyPrefab: {fileID: 6649476731136512899, guid: 1b46dd66382e7bf4284e62aaa16f50f1, type: 3}
+  chaseDistance: 50
+  enemyStandardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  enemyMaterialiseTime: 2
+  enemyMaterialiseShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
+  enemyMaterialiseColor: {r: 0, g: 3.0588236, b: 0.20392157, a: 0}
