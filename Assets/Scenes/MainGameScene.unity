@@ -1940,6 +1940,9 @@ MonoBehaviour:
   - poolSize: 20
     prefab: {fileID: 5562550369585630637, guid: 0802b9aab3a77cc4c99794941829eee8, type: 3}
     componentType: AmmoHitEffect
+  - poolSize: 200
+    prefab: {fileID: 2436984975263624041, guid: d5f13e34b51009047949d795b7886c04, type: 3}
+    componentType: IFireable
 --- !u!4 &1395595236
 Transform:
   m_ObjectHideFlags: 0
