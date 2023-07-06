@@ -18,6 +18,7 @@ public static class Settings
     // Max number of child corridors leading from a room.
     public const int maxChildCorridors = 3;
     public const float fadeInTime = 0.5f; // Time to fade in the room
+    public const float doorUnluckDelay = 1f;
     #endregion
 
 
@@ -54,12 +55,16 @@ public static class Settings
     public const float useAimAngleDistance = 3.5f;
     #endregion
 
-    #region ASTAR PATHFINDING PARAMETERS
+    #region A* PATHFINDING PARAMETERS
     public const int defaultAStarMovementPenalty = 40;
     public const int preferredPathAStarMovementPenalty = 1;
     public const int targetFrameRateToSpreadPathfindingOver = 60;
     public const float playerMoveDistanceToRebuildPath = 3f;
     public const float enemyPathRebuildCooldown = 2f;
+    #endregion
+
+    #region ENEMY PARAMETERS
+    public const int defaultEnemyHealth = 20;
     #endregion
 
     #region UI PARAMETERS
