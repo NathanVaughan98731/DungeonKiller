@@ -53,6 +53,41 @@ public class EnemyDetailsSO : ScriptableObject
     #endregion
     public Color enemyMaterialiseColor;
 
+    #region Header ENEMY WEAPON SETTINGS
+    [Space(10)]
+    [Header("Enemy Weapon Settings")]
+    #endregion
+    #region Tooltip
+    [Tooltip("The weapon for the enemy.")]
+    #endregion
+    public WeaponDetailsSO enemyWeapon;
+
+    #region Tooltip
+    [Tooltip("The minimum time delay interval in seconds between bursts of enemy shooting. This value should be > 0. A random value will be selected between the minimum value and the maximum value.")]
+    #endregion
+    public float firingIntervalMin = 0.1f;
+
+    #region Tooltip
+    [Tooltip("The maximum time delay interval in seconds between bursts of enemy shooting. This value should be > 0. A random value will be selected between the minimum value and the maximum value.")]
+    #endregion
+    public float firingIntervalMax = 1f;
+
+    #region Tooltip
+    [Tooltip("The minimum firing duration that the enemy shoots for during a firing burst.")]
+    #endregion
+    public float firingDurationMin = 1f;
+
+    #region Tooltip
+    [Tooltip("The maximum firing duration that the enemy shoots for during a firing burst.")]
+    #endregion
+    public float firingDurationMax = 2f;
+
+    #region Tooltip
+    [Tooltip("Select this if line of sight is required of the player before the enemy fires. If line of sight is not selected the enemy will fire regardless of the obstacles whenever the player is in range.")]
+    #endregion
+    public bool firingLineOfSightRequired;
+
+
     #region Validation
 #if UNITY_EDITOR
     // Validate the scriptable object details
@@ -64,6 +99,9 @@ public class EnemyDetailsSO : ScriptableObject
         HelperUtilities.ValidateCheckNullValue(this, nameof(enemyStandardMaterial), enemyStandardMaterial);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(enemyMaterialiseTime), enemyMaterialiseTime, true);
         HelperUtilities.ValidateCheckNullValue(this, nameof(enemyMaterialiseShader), enemyMaterialiseShader);
+
+        HelperUtilities.ValidateCheckPositiveRange(this, nameof(firingIntervalMin), firingIntervalMin, nameof(firingIntervalMax), firingDurationMax, false);
+        HelperUtilities.ValidateCheckPositiveRange(this, nameof(firingDurationMin), firingDurationMin, nameof(firingDurationMax), firingDurationMax, false);
     }
 #endif
     #endregion
