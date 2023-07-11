@@ -32,6 +32,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     [HideInInspector] public GameState gameState;
     [HideInInspector] public GameState previousGameState;
+    private long gameScore;
 
     protected override void Awake()
     {
@@ -61,12 +62,18 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         // Subscribe to room changed event
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+
+        // Subscribe to the points scored event
+        StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
     }
 
     private void OnDisable()
     {
         // Unsubscribe to room changed event
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+
+        // Unsubscribe to the points scored event
+        StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
     }
 
     // Handle room changed event
@@ -75,11 +82,23 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         SetCurrentRoom(roomChangedEventArgs.room);
     }
 
+    // Handle the points scored event
+    private void StaticEventHandler_OnPointsScored(PointsScoredArgs pointsScoredArgs)
+    {
+        // Increase the score
+        gameScore += pointsScoredArgs.points;
+
+        // Call score changed event
+        StaticEventHandler.CallScoreChangedEvent(gameScore);
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
         gameState = GameState.gameStarted;
         previousGameState = GameState.gameStarted;
+
+        gameScore = 0;
     }
 
     // Update is called once per frame
