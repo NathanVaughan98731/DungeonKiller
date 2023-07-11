@@ -8,6 +8,8 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(DestroyedEvent))]
 [RequireComponent(typeof(Destroyed))]
 
+[RequireComponent(typeof(DealContactDamage))]
+
 [RequireComponent(typeof(EnemyWeaponAI))]
 [RequireComponent(typeof(AimWeaponEvent))]
 [RequireComponent(typeof(AimWeapon))]

@@ -74,16 +74,6 @@ public class Health : MonoBehaviour
 
             PostHitImmunity();
         }
-
-        if (isDamageable && isRolling)
-        {
-            Debug.Log("DODGED BULLET");
-        }
-
-        if (!isDamageable && !isRolling)
-        {
-            Debug.Log("IMMUNE");
-        }
     }
 
     // Indicate a hit and give the post hit immunity

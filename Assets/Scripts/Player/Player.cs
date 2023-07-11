@@ -9,6 +9,10 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(Destroyed))]
 [RequireComponent(typeof(DestroyedEvent))]
 [RequireComponent(typeof(PlayerControl))]
+
+[RequireComponent(typeof(DealContactDamage))]
+[RequireComponent(typeof(ReceiveContactDamage))]
+
 [RequireComponent(typeof(MovementByVelocityEvent))]
 [RequireComponent(typeof(MovementByVelocity))]
 [RequireComponent(typeof(MovementToPositionEvent))]
@@ -93,7 +97,6 @@ public class Player : MonoBehaviour
     // Health changed event
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        Debug.Log("Health Amount = " + healthEventArgs.healthAmount);
 
         // If the player has died
         if (healthEventArgs.healthAmount <= 0f)

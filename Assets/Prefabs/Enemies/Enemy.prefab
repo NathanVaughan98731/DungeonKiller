@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 6682398094089776175}
   - component: {fileID: 19047077650829794}
   - component: {fileID: 1442210365042527868}
+  - component: {fileID: 7476362392550552856}
   m_Layer: 15
   m_Name: Enemy
   m_TagString: Untagged
@@ -770,6 +771,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDamageable: 1
+  enemy: {fileID: 0}
+--- !u!114 &7476362392550552856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971464704599964503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fc1ae6a37d17f4389cfc71db943af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactDamageAmount: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 132096
 --- !u!1 &7522222212900454639
 GameObject:
   m_ObjectHideFlags: 0
