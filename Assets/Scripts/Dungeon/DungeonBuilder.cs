@@ -51,7 +51,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         dungeonBuildSuccessful = false;
         int dungeonBuildAttempts = 0;
 
-        while (!dungeonBuildSuccessful && dungeonBuildAttempts < Settings.maxDungeonBuildAttampts)
+        while (!dungeonBuildSuccessful && dungeonBuildAttempts < Settings.maxDungeonBuildAttempts)
         {
             dungeonBuildAttempts++;
 
@@ -71,12 +71,12 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
 
                 // Attempt to build a random dungeon for the selected room node graph
                 dungeonBuildSuccessful = AttemptToBuildRandomDungeon(roomNodeGraph);
+            }
 
-                if (dungeonBuildSuccessful)
-                {
-                    // Instantiate Room GameObjects
-                    InstantiateRoomGameObjects();
-                }
+            if (dungeonBuildSuccessful)
+            {
+                // Instantiate Room GameObjects
+                InstantiateRoomGameObjects();
             }
         }
 
@@ -149,7 +149,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         {
             //Get next room node from open room node queue
             RoomNodeSO roomNode = openRoomNodeQueue.Dequeue();
-            
+            Debug.Log(roomNodeGraph.ToString());
             // Add child nodes to queue from room node graph (with links to this parent room)
             foreach (RoomNodeSO childRoomNode in roomNodeGraph.GetChildRoomNodes(roomNode))
             {
