@@ -33,6 +33,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [HideInInspector] public GameState gameState;
     [HideInInspector] public GameState previousGameState;
     private long gameScore;
+    private int scoreMultiplier;
 
     protected override void Awake()
     {
@@ -65,6 +66,9 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         // Subscribe to the points scored event
         StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
+
+        // Subscribe to the score multiplier event
+        StaticEventHandler.OnMultiplier += StaticEventHandler_OnMultiplier;
     }
 
     private void OnDisable()
@@ -74,6 +78,9 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         // Unsubscribe to the points scored event
         StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
+
+        // Unsubscribe to the score multiplier event
+        StaticEventHandler.OnMultiplier -= StaticEventHandler_OnMultiplier;
     }
 
     // Handle room changed event
@@ -86,10 +93,28 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void StaticEventHandler_OnPointsScored(PointsScoredArgs pointsScoredArgs)
     {
         // Increase the score
-        gameScore += pointsScoredArgs.points;
+        gameScore += pointsScoredArgs.points * scoreMultiplier;
 
         // Call score changed event
-        StaticEventHandler.CallScoreChangedEvent(gameScore);
+        StaticEventHandler.CallScoreChangedEvent(gameScore, scoreMultiplier);
+    }
+
+    private void StaticEventHandler_OnMultiplier(MultiplierArgs multiplierArgs)
+    {
+        if (multiplierArgs.multiplier)
+        {
+            scoreMultiplier++;
+        }
+        else
+        {
+            scoreMultiplier--;
+        }
+
+        // Clamp the multiplier
+        scoreMultiplier = Mathf.Clamp(scoreMultiplier, 1, 30);
+
+        // Call the score changed event to update
+        StaticEventHandler.CallScoreChangedEvent(gameScore, scoreMultiplier);
     }
 
     // Start is called before the first frame update
@@ -98,7 +123,11 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         gameState = GameState.gameStarted;
         previousGameState = GameState.gameStarted;
 
+        // Initialise game score
         gameScore = 0;
+
+        // Initialise multiplier
+        scoreMultiplier = 1;
     }
 
     // Update is called once per frame
