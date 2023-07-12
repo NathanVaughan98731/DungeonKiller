@@ -3035,9 +3035,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1801690346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17944284669d48b47bb0fca5dd0acb25, type: 3}
+  m_Script: {fileID: 11500000, guid: 32a2761aeff00ce4f96b16ca5996ee9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniMapCamera: {fileID: 1312687728}
 --- !u!1 &1831515044
 GameObject:
   m_ObjectHideFlags: 0
