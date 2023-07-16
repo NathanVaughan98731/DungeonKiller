@@ -15,7 +15,7 @@ MonoBehaviour:
   playerCharacterName: The General
   playerPrefab: {fileID: 3809452210154359747, guid: 88194f01099183c40a45cd677ba53697, type: 3}
   runtimeAnimatorController: {fileID: 9100000, guid: e87ce176a15556c459b355908992b930, type: 2}
-  playerHealthAmount: 1000
+  playerHealthAmount: 100
   isImmuneAfterHit: 1
   hitImmunityTime: 3
   startingWeapon: {fileID: 11400000, guid: bef0a793f9b628e41990bf2e2fdceed6, type: 2}
