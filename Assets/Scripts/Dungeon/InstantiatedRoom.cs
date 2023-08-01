@@ -21,6 +21,8 @@ public class InstantiatedRoom : MonoBehaviour
 
     private BoxCollider2D boxCollider2D;
 
+    [SerializeField] private GameObject environmentGameObject;
+
     private void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -320,6 +322,22 @@ public class InstantiatedRoom : MonoBehaviour
         boxCollider2D.enabled = true;
     }
 
+    public void DeactivateEnvironmentGameObjects()
+    {
+        if (environmentGameObject != null)
+        {
+            environmentGameObject.SetActive(false);
+        }
+    }
+
+    public void ActivateEnvironmentGameObjects()
+    {
+        if (environmentGameObject != null)
+        {
+            environmentGameObject.SetActive(true);
+        }
+    }
+
     // Lock the room doors
     public void LockDoors()
     {
@@ -405,7 +423,7 @@ public class InstantiatedRoom : MonoBehaviour
     // Debugging
     private void OnDrawGizmos()
     {
-        for (int i = 0; i< (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); i++)
+        for (int i = 0; i < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); i++)
         {
             for (int j = 0; j < (room.templateUpperBounds.y - room.templateUpperBounds.y + 1); j++)
             {
@@ -420,4 +438,12 @@ public class InstantiatedRoom : MonoBehaviour
     }
 
 
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(environmentGameObject), environmentGameObject);
+    }
+#endif
+    #endregion
 }

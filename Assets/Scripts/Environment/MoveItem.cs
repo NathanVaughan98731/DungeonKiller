@@ -22,7 +22,7 @@ public class MoveItem : MonoBehaviour
         // Get component references
         boxCollider2D = GetComponent<BoxCollider2D>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        instantiatedRoom = GetComponent<InstantiatedRoom>();
+        instantiatedRoom = GetComponentInParent<InstantiatedRoom>();
 
         // Add this item to the obstacles array
         instantiatedRoom.moveableItemsList.Add(this);

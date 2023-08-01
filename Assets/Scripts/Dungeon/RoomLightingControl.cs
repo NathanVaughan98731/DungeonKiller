@@ -36,6 +36,12 @@ public class RoomLightingControl : MonoBehaviour
             // Fade in room
             FadeInRoomLighting();
 
+            // Ensure that the room environment decoration game objects are activated
+            instantiatedRoom.ActivateEnvironmentGameObjects();
+
+            // Fade in the environment decoration game objects
+            FadeInEnvironmentLighting();
+
             // Fade in the room doors lighting
             FadeInDoors();
 
@@ -74,6 +80,44 @@ public class RoomLightingControl : MonoBehaviour
         instantiatedRoom.decoration2Tilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
         instantiatedRoom.frontTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
         instantiatedRoom.minimapTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+    }
+
+    // Fade in the environmental game objects
+    private void FadeInEnvironmentLighting()
+    {
+        Material material = new Material(GameResources.Instance.variableLitShader);
+
+        Environment[] environmentComponents = GetComponentsInChildren<Environment>();
+
+        // Iterate 
+        foreach (Environment environmentComponent in environmentComponents)
+        {
+            if (environmentComponent.spriteRenderer != null)
+            {
+                environmentComponent.spriteRenderer.material = material;
+            }
+        }
+        StartCoroutine(FadeInEnvironmentLightingRoutine(material, environmentComponents));
+    }
+
+    // Fade in the environmental game objects coroutine
+    private IEnumerator FadeInEnvironmentLightingRoutine(Material material, Environment[] environmentComponents)
+    {
+        // Gradually fade in the lighting
+        for (float i = 0.05f; i <= 1f; i += Time.deltaTime / Settings.fadeInTime)
+        {
+            material.SetFloat("Alpha_Slider", i);
+            yield return null;
+        }
+
+        // Set the environment components material back to the lit material
+        foreach (Environment environmentComponent in environmentComponents)
+        {
+            if (environmentComponent.spriteRenderer != null)
+            {
+                environmentComponent.spriteRenderer.material = GameResources.Instance.litMaterial;
+            }
+        }
     }
 
     // Fade in the doors
