@@ -160,8 +160,11 @@ public static class AStar
 
         int movementPenaltyForGridSpace = instantiatedRoom.aStarMovementPenalty[neighbourNodeXPosition, neighbourNodeYPosition];
 
+        // Check for moveable obstacle at that position
+        int itemObstacleForGridSpace = instantiatedRoom.aStarItemObstacles[neighbourNodeXPosition, neighbourNodeYPosition];
+
         // If the neighbour is in the closed list then we skip
-        if (movementPenaltyForGridSpace == 0 || closedNodeHashSet.Contains(neighbourNode))
+        if (movementPenaltyForGridSpace == 0 || itemObstacleForGridSpace == 0 || closedNodeHashSet.Contains(neighbourNode))
         {
             return null;
         }

@@ -19,6 +19,7 @@ public class EnemyMovementAI : MonoBehaviour
     [HideInInspector] public float moveSpeed;
     private bool chasePlayer = false;
     [HideInInspector] public int updateFrameNumber = 1;
+    private List<Vector2Int> surroundingPositionList = new List<Vector2Int>();
 
     private void Awake()
     {
@@ -156,7 +157,7 @@ public class EnemyMovementAI : MonoBehaviour
         Vector3Int playerCellPosition = currentRoom.instantiatedRoom.grid.WorldToCell(playerPosition);
         Vector2Int adjustedPlayerCellPosition = new Vector2Int(playerCellPosition.x - currentRoom.templateLowerBounds.x, playerCellPosition.y - currentRoom.templateLowerBounds.y);
 
-        int obstacle = currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x, adjustedPlayerCellPosition.y];
+        int obstacle = Mathf.Min(currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x, adjustedPlayerCellPosition.y], currentRoom.instantiatedRoom.aStarItemObstacles[adjustedPlayerCellPosition.x, adjustedPlayerCellPosition.y]);
 
         // If the player is not on a cell square that is marked as an obstacle then return the position
         if (obstacle != 0)
@@ -165,25 +166,50 @@ public class EnemyMovementAI : MonoBehaviour
         }
         else
         {
-            for (int i = -1; i <= 1; i ++)
+            // Empty the surrounding position list
+            surroundingPositionList.Clear();
+
+            // Populate the surrounding position list which will hold the 8 possible vector locations around (0,0) grid
+            for (int i = -1; i <= 1; i++)
             {
                 for (int j = -1; j <= 1; j++)
                 {
-                    if (j == 0 && i == 0) continue;
-
-                    try
-                    {
-                        obstacle = currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x + i, adjustedPlayerCellPosition.y + j];
-                        if (obstacle != 0) return new Vector3Int(playerCellPosition.x + i, playerCellPosition.y + j, 0);
-                    }
-                    catch
+                    if (j == 0 && i == 0)
                     {
                         continue;
                     }
+
+                    surroundingPositionList.Add(new Vector2Int(i, j));
                 }
             }
-            // No non-obstacle cells are surrounding the player so we can return the player position
-            return playerCellPosition;
+
+            // Iterate through all of the positions
+            for (int k = 0; k < 8; k++)
+            {
+                // Generate a random index
+                int index = Random.Range(0, surroundingPositionList.Count);
+
+                // Check if there is an obstacle in the currently selected surrounding position
+                try
+                {
+                    obstacle = Mathf.Min(currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x + surroundingPositionList[index].x, adjustedPlayerCellPosition.y + surroundingPositionList[index].y], currentRoom.instantiatedRoom.aStarItemObstacles[adjustedPlayerCellPosition.x + surroundingPositionList[index].x, adjustedPlayerCellPosition.y + surroundingPositionList[index].y]);
+                
+                    if (obstacle != 0)
+                    {
+                        return new Vector3Int(playerCellPosition.x + surroundingPositionList[index].x, playerCellPosition.y + surroundingPositionList[index].y);
+                    }
+                }
+                catch
+                {
+
+                }
+
+                // Remove the surrounding position with the obstacle so that we can try again
+                surroundingPositionList.RemoveAt(index);
+            }
+
+            // If there is no non-obstacle cells found surrounding the player
+            return (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Length)];
         }
     }
 
